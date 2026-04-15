@@ -1,22 +1,25 @@
-from datetime import datetime, timedelta
+def generate_year_calendar():
+    month_starts = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365]
+    return month_starts
 
-# Function to count Sundays that fall on the first of the month
 
-def count_sundays(start_date, end_date):
-    current_date = start_date
-    sunday_count = 0
-    
-    while current_date <= end_date:
-        if current_date.weekday() == 6:  # 6 corresponds to Sunday
-            sunday_count += 1
-        current_date += timedelta(days=1)
+def concatenate_years():
+    years = []
+    for year in range(1900, 2023):  # Consider years until 2022
+        years.extend(generate_year_calendar())
+    return years
 
-    return sunday_count
 
-# Define the start and end dates
-start_date = datetime(1901, 1, 1)
-end_date = datetime(2000, 12, 31)
+def date_to_index(date_str):
+    day, month, year = map(int, date_str.split('/'))
+    month_starts = generate_year_calendar()
+    return month_starts[month - 1] + (day - 1) + (year - 1900) * 365
 
-# Count the Sundays on the first of the month
-sundays_on_first = count_sundays(start_date, end_date)
-print(f'Number of Sundays that fell on the first of the month from {start_date.date()} to {end_date.date()}: {sundays_on_first}')
+
+def count_sundays_on_first():
+    sundays_count = 0
+    for year in range(1900, 2023):
+        index = date_to_index(f'01/01/{year}')
+        if index % 7 == 6:  # Checking if it's Sunday
+            sundays_count += 1
+    return sundays_count
