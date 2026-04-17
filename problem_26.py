@@ -1,3 +1,5 @@
+# Problem 26: Reciprocal Cycles    
+# very naive solution
 import sys
 
 def get_period(m):
