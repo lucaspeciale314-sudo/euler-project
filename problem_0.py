@@ -1,3 +1,4 @@
+# Entry question
 def sum_odd_squares(n):
     """Calculate the sum of the first n odd square numbers."""
     return sum((i * i) for i in range(1, 2 * n, 2))
