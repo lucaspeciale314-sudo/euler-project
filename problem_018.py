@@ -1,5 +1,6 @@
 # Problem 18
 # The triangle is written as a multiline string.
+# Note : it works for Problem 67 as well
 triangle_string = """ 75
 95 64
 17 47 82
