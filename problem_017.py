@@ -8,7 +8,7 @@ def counting_word_length(n):
     
     h=n//100 #count the third digit
     if h == 0: length -= 10
-    elif h == 1: length += 3 #3+7
+    elif h == 1: length += 3 
     elif h == 2: length += 3
     elif h == 3: length += 5
     elif h == 4: length += 4
