@@ -2,12 +2,15 @@
 import math
 
 def divisors_sum(n):
-    sum=1
+    if n==1: return 0
+    total=1
     for i in range(2,int(math.sqrt(n))+1):
-        if n % i == 0: 
-            sum += i+n//i 
-            #print(i)
-    return sum
+        if n % i == 0:
+            if i * i == n:
+                total += i
+            else:
+                total += i + n // i
+    return total
 
 #n=220
 #print(divisors_sum(n))
@@ -17,12 +20,13 @@ def amicable_numbers(dictionary,N):
         if n not in dictionary:
             if divisors_sum(divisors_sum(n)) == n and divisors_sum(n) != n:
                 dictionary[n]=True
-                dictionary[divisors_sum(n)]=True
-            else: dictionary[n]=False
+                if divisors_sum(n) < N: dictionary[divisors_sum(n)]=True
+            else: 
+                dictionary[n]=False
     return
 
 dictionary={}
 N=10000
 amicable_numbers(dictionary,N)
-sum_=sum(k for k, is_true in dictionary.items() if is_true)
-print(f"the sum is {sum_}")
+total=sum(k for k, is_true in dictionary.items() if is_true)
+print(f"the sum is {total}")
