@@ -1,4 +1,5 @@
 # Problem 23: Sum of non-abundant numbers 
+# We also print the complete list at the end
 import math
 def divisors_sum(n):
     if n==1: return 0
