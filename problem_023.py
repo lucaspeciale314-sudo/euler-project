@@ -22,7 +22,7 @@ sum_of_two_abundant_numbers=set()
 for i, a in enumerate(abundant_numbers):
     for b in abundant_numbers[i:]:
         s=a+b
-        if a+b <= 28123: break 
+        if a+b > 28123: break 
         sum_of_two_abundant_numbers.add(s)
         
 numbers={}
