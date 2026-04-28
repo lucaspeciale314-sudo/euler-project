@@ -9,10 +9,10 @@ def divisors_sum(n):
             else:
                 total += i + n // i
     return total
-    
+LIMIT = 28123
 abundant_numbers=[]
 
-for k in range(1,28124):
+for k in range(1,LIMIT + 1):
     if divisors_sum(k) > k: abundant_numbers.append(k)
 
 #print(abundant_numbers)
@@ -25,14 +25,9 @@ for i, a in enumerate(abundant_numbers):
         if a+b > 28123: break 
         sum_of_two_abundant_numbers.add(s)
         
-numbers={}
-sum_nonabundant_numbers=0
-for k in sum_of_two_abundant_numbers:
-    numbers[k]= False
-for i in range(1,28124):
-    if i not in numbers: numbers[i]=True
-
-for l in numbers:
-    if numbers[l] == True: sum_nonabundant_numbers += l
+sum_nonabundant_numbers = sum(
+    n for n in range(1, LIMIT + 1)
+    if n not in sum_of_two_abundant_numbers
+)
 
 print(sum_nonabundant_numbers)
